@@ -143,8 +143,14 @@ $(this).val(formatter.format(amount));
 
 $("#calculate").click(function() {
 
-  $("#results").addClass("invisible");
-  $("#results").addClass("d-none");
+  $("#results").addClass("invisible d-none");
+  $(".HFSP").removeClass("invisible d-none");
+
+
+  $("#HFSP").addClass("invisible d-none");
+  $("#schiff").addClass("invisible d-none");
+  $("#buffett").addClass("invisible d-none");
+
 
 
   // fire number equals annual expenses divided by withdrawal rate
@@ -187,18 +193,22 @@ $("#calculate").click(function() {
 
    if (yearnumber === 0) {
     $("#years").html("Congratulations, you are already FI!");
-    $("#results").removeClass("invisible");
-    $("#results").removeClass("d-none");
+    $("#results").removeClass("invisible d-none");
    }
    else if (yearnumber >=100) {
-     $("#years").html("You'll never retire, inflation ate all your purchasing power");
-     $("#results").removeClass("invisible");
-     $("#results").removeClass("d-none");
+     $("#years").html("You will never retire because the money printer will eat all of your purchasing power.  You can either buy more Bitcoin or " );
+     $("#results").removeClass("invisible d-none");
+     $(".HFSP").addClass("invisible d-none");
+
+
+     $("#HFSP").removeClass("invisible d-none");
+     $("#schiff").removeClass("invisible d-none");
+     $("#buffett").removeClass("invisible d-none");
    }
    else {
     $("#years").html((yearnumber).toFixed(2));
-    $("#results").removeClass("invisible");
-    $("#results").removeClass("d-none");
+    $("#results").removeClass("invisible d-none");
+
    }
 
    var inflationrate = (ConvertToNumber($("#inflation").val()) * .01) * -1;
