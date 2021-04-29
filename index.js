@@ -167,6 +167,7 @@ $("#calculate").click(function() {
 
     netWorth = 0;
     nominalnetWorth = 0;
+    yearnumber = yearnumber + .1
 
     for (var x = 0; x < currentValues.length; x++) {
       var principal = ConvertToNumber(currentValues[x].value);
@@ -182,12 +183,12 @@ $("#calculate").click(function() {
     // netWorth = ConvertToNumber(compoundCalculation(700000, 1000, .1, yearnumber));
 
 
-   yearnumber = yearnumber + .1
-
    }
 
-   if (yearnumber <= 0) {
-     alert("fill in your expenses!");
+   if (yearnumber === 0) {
+    $("#years").html("Congratulations, you are already FI!");
+    $("#results").removeClass("invisible");
+    $("#results").removeClass("d-none");
    }
    else if (yearnumber >=100) {
      $("#years").html("You'll never retire, inflation ate all your purchasing power");
@@ -195,15 +196,17 @@ $("#calculate").click(function() {
      $("#results").removeClass("d-none");
    }
    else {
-    $("#years").html((yearnumber - .1).toFixed(2));
+    $("#years").html((yearnumber).toFixed(2));
     $("#results").removeClass("invisible");
     $("#results").removeClass("d-none");
    }
 
-
+   var inflationrate = (ConvertToNumber($("#inflation").val()) * .01) * -1;
 
    $("#inflation-results").html(ConvertNumToCommas(netWorth.toFixed(2)));
    $("#no-inflation-results").html(ConvertNumToCommas(nominalnetWorth.toFixed(2)));
+   $("#future-dollar").html(compoundCalculation(1, 0, inflationrate, yearnumber));
+   $("#future-years").html(yearnumber.toFixed(2));
 
 
 });
