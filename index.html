@@ -34,7 +34,36 @@
   </div>
 
 
-<div class="container">
+<div class="container bg-light">
+
+  <!--****************** Modal start  *************************-->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title bitcoinFont" id="exampleModalLabel">Calculate Bitcoin Annual Return</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+                <p>Bitcoin Current Price ($): <input type="number" id="interest-current-price"></p>
+                <p> Bitcoin Future Price Prediction ($): <input type="number" id="interest-future-price" class="mt-2 "></p>
+                <p>Year Of Future Price <input type="number" id="interest-year" min="2022" value="2022" class="mt-2 "></p>
+                <button id="interest-calculate" class="btn btn-warning text-dark mt-2 bitcoinFont">Calculate Annual Return</button>
+                <p id="final-result" class="mt-2"></p>
+                <button id="interest-copy" class="btn btn-warning text-dark mt-2 copy bitcoinFont">Copy Return Rate to Calculator</button>
+                <br>
+                <button id="years-copy" class="btn btn-warning text-dark mt-2 copy bitcoinFont">Copy Timeframe to Calculator</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning text-dark bitcoinFont" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- *********************** Modal End  ********************************-->
 
   <div class="row py-3 my-3">
     <div class="col-lg text-center">
@@ -49,7 +78,11 @@
       <input type="text" name="" class="center text-center dollar monthly-contribution" placeholder="0.00">
 
       <h5>Expected Annual Return (%)</h5>
-      <input type="text" name="" class="text-center interest" placeholder="200">
+      <input type="text" name="" class="text-center center interest d-block" placeholder="200">
+
+      <a type="button" class="btn btn-dark mt-3" id="bitcoin-help" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Click Here to Calculate Annual Return
+      </a>
     </div>
 
   </div>
